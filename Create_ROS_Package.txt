@@ -1,0 +1,10 @@
+#Create working space
+mkdir -p ../catkin_ws/src
+cd ../catkin_ws/src
+catkin_init_workspace
+cd ..
+catkin_make
+cd src
+catkin_create [package_name] [depend1] [depend2]
+cd ..
+catkin_make
