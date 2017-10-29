@@ -8,4 +8,3 @@ cd src
 catkin_create [package_name] [depend1] [depend2]
 cd ..
 catkin_make
-
