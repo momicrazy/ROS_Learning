@@ -1,0 +1,7 @@
+#rossevice command:
+rosparam set "parameter" "value"
+rosparam get "parameter"
+rosparam load "file"
+rosparam dump "file" 
+rosparam list
+
