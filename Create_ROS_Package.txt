@@ -11,4 +11,6 @@ catkin_make
 
 #source the setup file in ROS environment
 . ~/catkin_ws/devel/setup.bash
-
+vim ~/.bashrc
+#add
+source ~/dev/catkin_ws/.../setup.bash

@@ -1,0 +1,28 @@
+#create msg in folder
+cd ../catkin/src/[package_name]/
+mkdir msg
+touch [msg_name].msg
+
+#In msg file should have message structure like :
+int32 A
+int32 B
+int32 C
+
+#Compile the package.xml, uncomment below lines by delete the <! ---->
+<build_depend>message_generation</build_depend>
+<run_depend>message_runtime</build_depend>
+
+#Compile CMakeList.txt, add message_generation in find package, and uncomment the new message file like below:
+find_package(catkin REQUIRED COMPONENTS
+    message_generation
+)
+
+add_message_file(
+        FILES
+        [msg_name].msg
+)
+
+generate_messages{
+    DEPENDENCIES
+    std_msgs
+}
