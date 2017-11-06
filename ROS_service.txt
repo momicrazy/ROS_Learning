@@ -5,3 +5,45 @@ rosparam load "file"
 rosparam dump "file" 
 rosparam list
 
+
+
+#compile rossrv, create a folder under the package
+cd .../catkin_ws/src/[package_name]/
+mkdir srv
+cd srv
+touch [srv_name.srv]
+
+#compile the package.xml, uncomment below line:
+<build_depend>message_generation</build_depend>
+<run_depend>message_runtime</run_depend>
+
+#compile CMakeList.txt 
+#uncomment below line:
+catkin_package(
+CATKIN_DEPENDS message_runtime
+)
+
+generate_messages(
+    DEPENDENCIES
+    std_msgs
+)
+
+#add message_generation to below place in CMakeList.txt
+find_package(catkin REQUIRED COMPONENTS
+    message_generation
+)
+
+#add srv file in below place
+add_service_files(
+    FILES
+    [srv_name].srv
+)
+
+
+
+#ros service is the class in c++, if once want to use it, the class file must be included in the declairaiton.
+#the service class is include in the package class. So it must be include as :[package file]/[service file].
+#ros service file can be seperate in to two parts, upper part is request, downward part is respose.
+#we can have two part to operate the transition, one calls server, the other calls client.
+#service can pub the information through changing the global variable "service file parameter"
+#the method client.call(srv) can check the callback status.
