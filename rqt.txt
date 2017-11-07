@@ -1,0 +1,3 @@
+#rqt_console
+
+-to see the ROS_INFO publish message/topic

@@ -1,0 +1,15 @@
+#Create a directory below the package file
+roscd [package_name]
+mkdir launch
+cd launch
+touch [launchFile_name].launch
+
+
+#add below lines:
+<?xml version = "1.0"?>
+<launch>
+    <node = "[node name]" pkg = "[package name]" type = "[node name]"/>
+</launch>
+
+
+#If we launch node by using launch file, we don't need to roscore since launch file will automatically active it.
