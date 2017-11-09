@@ -1,3 +1,8 @@
 #rqt_console
 
 -to see the ROS_INFO publish message/topic
+
+
+#rosrun rqt_reconfigure rqt_reconfigure
+
+-use GUI to reconfigure parameters dynamically

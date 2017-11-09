@@ -1,0 +1,64 @@
+########################################################################################
+#Create cfg folder below package
+
+roscd [package name]
+mkdir cfg
+cd cfg
+vim [config name].cfg
+
+
+########################################################################################
+#Add below lines in cfg file (python)
+
+#! /usr/bin/env_python
+PACKAGE = "[package name]"
+
+gen = ParameterGenerator()
+
+gen.add("double_param" ,double_t ,0 ,"A double parameter" ,.1 ,0 ,1);
+gen.add("str_param" ,str_t ,0 ,"A string parameter" ,"xxxxx");
+gen.add("int_param" ,int_t ,0 ,"A int parameter" ,2 ,0 ,10);
+gen.add("bool_param" ,bool_t ,0 ,"A bool parameter" ,True);
+
+size_enum = gen.enum([ gen.const("Low", int_t, 0, "Low is 0"),
+                       gen.const("medium", int_t, 1, "Medium is 1"),
+                       gen.const("high", int_t, 2, "High is 1"),
+                       "Select from list")
+
+gen.add("size" ,int_t ,0 ,"Select from list" ,1 ,0 ,3, edit_method = size_enum);
+
+exit(gen.generator(PACKAGE, "chapter2_tutorials", "chapter2"))
+
+
+
+
+########################################################################################
+#Add below lines in CMakeList.txt
+
+find_Package(....
+             ....
+             dynamic_reconfigure
+)
+
+generater_dynamic_reconfigure_options( cfg/[config name].cfg)
+
+add_dependencies([node name] [chapter2_tutorials]_gencfg)
+
+
+
+
+########################################################################################
+#add below lines in src code :
+
+#include <dynamic reconfigure/server.h>
+#include <[pack name]/[config name]Config.h>
+
+void callback([package name]::[config name]Config &config, unit32_t level)
+{
+}
+
+dynamic_reconfigure::Server<[package name]::[config name]> server;
+dynamic_reconfigure::Server<[package name]::[config name]>::CallbackType f;
+
+f = boost::bind(&callback ,_1 ,_2);
+server.setCallback(f);
