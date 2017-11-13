@@ -1,0 +1,13 @@
+# cmake-gui 
+
+-unknow function ,seems powerful!
+
+
+# roswtf
+
+-check package dependencies error
+
+
+# catkin-lint
+
+-check CMakelist.txt / package.xml

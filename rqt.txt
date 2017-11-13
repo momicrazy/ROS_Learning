@@ -6,3 +6,13 @@
 #rosrun rqt_reconfigure rqt_reconfigure
 
 -use GUI to reconfigure parameters dynamically
+
+
+#rosrun rqt_ez_publisher rqt_ez_publisher
+
+-easily publish the msg through topic
+
+
+#rosrun rqt_graph rqt_graph
+
+-check the topic conneection between nodes
