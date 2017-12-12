@@ -9,8 +9,14 @@ catkin_create [package_name] [depend1] [depend2]
 cd ..
 catkin_make
 
-#source the setup file in ROS environment
-. ~/catkin_ws/devel/setup.bash
-vim ~/.bashrc
-#add
-source ~/dev/catkin_ws/.../setup.bash
+##### Need to be written in ~/.bashrc
+source ~/catkin_ws/devel/setup.bash
+source /opt/ros/kinetic/setup.bash
+
+### Master
+export ROS_IP=192.168.111.xxx [own IP]
+export ROS_MASTER=https://$ROS_IP:11311
+
+### Slave
+export ROS_MASTER_URI=http://192.168.111.xxx:11311 [master IP]
+export ROS_IP=192.168.111.xxx [own IP]
