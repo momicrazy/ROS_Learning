@@ -1,0 +1,18 @@
+## Ros Node will be automatically create using the command:
+$ ros::NodeHandle nh;
+
+##### NameSpace #####
+$ ros::NodeHandle nh;
+# create a node down namespace <node_namespace>
+
+$ ros::NodeHandle nh("my_namespace");
+# create a node down namespace <node_namespace>/my_namespace
+
+$ ros::NodeHandle nh1("ns1");
+$ ros::NodeHandle nh2(nh1,"ns2");
+# create a node2 down namespace append from nh1, nh2 namespace <node_namespace>/ns1/ns2
+
+$ ros::NodeHandle pnh("~private")
+$ ros::Subscriber sub = pnh.subscribe("private_topic", ...);
+# create a ndoe down namespace <node_name>/private
+# subcribe to <node_name>/private/private_topic
